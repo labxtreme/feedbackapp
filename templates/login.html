@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <title>Login Page</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Login</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{messages[0]}}  
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form action='/login' method ='POST'> 
+                <p> 
+                    <label >Your Employee ID</label>
+                    <input class="input is-large" name="EID" required="required" type="text" placeholder="XXXXX"/>
+                </p>
+                <p> 
+                    <label >Your password </label>
+                    <input class="input is-large" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                </p>
+                <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" name="Remember">
+                    Remember me
+                </label>
+            </div>
+                <p> 
+                    <input class="button is-block is-info is-large is-fullwidth" type="submit" value="Login" /> 
+                </p>
+                <p>
+                    Not Registered yet ?<br>
+                    <a href="/signup">Fill Your Details So that the Admin can verify them</a>
+                </p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

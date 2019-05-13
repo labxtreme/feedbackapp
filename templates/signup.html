@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+ <title>Sign-up Page</title>
+ {% endblock %}
+
+
+
+{% block body %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Sign Up</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{messages[0]}} Go to <a href="{{url_for('auth.login')}}">Login Page</a> 
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form action='/signup' method="POST"> 
+                <p> 
+                    <label >Your name</label>
+                    <input class="input is-large" name="Ename" required="required" type="text" placeholder="XXXXX" />
+                </p>
+                <p> 
+                    <label >Your Employee ID</label>
+                    <input class="input is-large" name="EID" required="required" type="text" placeholder="XXXXX" />
+                </p>
+                <p> 
+                    <label >Company Provided E-mail</label>
+                    <input class="input is-large" name="emailsignup" required="required" type="email" placeholder="XXXXXXXXXXXX@compunnel.com"/> 
+                </p>
+                <p> 
+                    <label >Your password </label>
+                    <input class="input is-large" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                </p>
+                <p> 
+                    <label >Please confirm your password </label>
+                    <input  class="input is-large" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                </p>
+                <br>
+                <p> 
+                    <input class="button is-block is-info is-large is-fullwidth" id='create' type="submit" value="Sign up" /> 
+                </p>
+                <p>  
+                    Already Registered ?<br>
+                    <a href="/login" class="to_register"> log in </a>
+                </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
